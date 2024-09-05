@@ -75,5 +75,8 @@ header nav a {
   letter-spacing: 0.1rem;
   line-height: 3.5rem;
   margin-bottom: 0.8rem;
-  background: linear-gradient(#d3321d);
+  background: linear-gradient(#d3321d, #ffcf67);
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
 }
