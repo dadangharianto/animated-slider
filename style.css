@@ -75,7 +75,7 @@ header nav a {
   letter-spacing: 0.1rem;
   line-height: 3.5rem;
   margin-bottom: 0.8rem;
-  max-width: 25rem;
+  /* max-width: 25rem; */
   background: linear-gradient(#0c0c0c, #0f971c, #28b8d5, #fc9f32);
   background-clip: text;
   color: transparent;
@@ -164,6 +164,13 @@ header nav a {
   text-shadow: 1px 1px 1px #000;
 }
 
+.thumbnail .item .detail blockquote {
+  font-size: 0.7rem;
+  font-weight: 100;
+  text-align: right;
+  text-shadow: 1px 1px 1px #000;
+}
+
 .arrows {
   position: absolute;
   top: 80%;
@@ -234,7 +241,7 @@ header nav a {
 }
 
 /* Action next */
-.slider .next .list .item:nth-child(1) > img {
+.slider.next .list .item:nth-child(1) > img {
   width: 150px;
   height: 220px;
   position: absolute;
@@ -251,5 +258,113 @@ header nav a {
     left: 0;
     bottom: 0;
     border-radius: 0;
+  }
+}
+
+.slider.next .thumbnail .item:nth-last-child(1) {
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  animation: showThumbnail 0.5s linear 1 forwards;
+}
+
+@keyframes showThumbnail {
+  to {
+    width: 150px;
+    opacity: 1;
+  }
+}
+
+.slider.next .thumbnail {
+  transform: translateX(150px);
+  animation: transformThumbnail 0.5s linear 1 forwards;
+}
+
+@keyframes transformThumbnail {
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Action Previous */
+.slider.prev .list .item:nth-child(2) {
+  z-index: 2;
+}
+.slider.prev .list .item:nth-child(2) > img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: shrinkImage 0.5s linear 1 forwards;
+}
+
+@keyframes shrinkImage {
+  to {
+    width: 150px;
+    height: 220px;
+    border-radius: 15px;
+    left: 50%;
+    bottom: 50px;
+  }
+}
+
+.slider.prev .thumbnail .item:nth-child(1) {
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  animation: showThumbnail 0.5s linear 1 forwards;
+}
+
+.slider.prev .list .item:nth-child(2) .title,
+.slider.prev .list .item:nth-child(2) .name,
+.slider.prev .list .item:nth-child(2) figure,
+.slider.prev .list .item:nth-child(2) .desc,
+.slider.prev .list .item:nth-child(2) .more {
+  animation: hideDetail 0.5s 1s linear 1 forwards;
+}
+
+@keyframes hideDetail {
+  to {
+    transform: translateY(-150px);
+    filter: blur(20px);
+    opacity: 0;
+  }
+}
+
+.slider.next .arrows button,
+.slider.prev .arrows button {
+  pointer-events: none;
+}
+
+.loading-bar {
+  width: 0%;
+  height: 5px;
+  background-color: #f80;
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+
+.slider.next .loading-bar,
+.slider.prev .loading-bar {
+  width: 100%;
+  animation: loadingTime 2s linear 1 forwards;
+}
+
+@keyframes loadingTime {
+  to {
+    width: 0;
+  }
+}
+
+/* Mobile Breakpoint */
+@media screen and (max-width: 678px) {
+  .slider .list .item .detail .name {
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+  }
+
+  .slider .list .item .detail .desc {
+    font-size: 0.8rem;
   }
 }
