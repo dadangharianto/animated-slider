@@ -369,3 +369,13 @@ header nav a {
     max-width: 15rem;
   }
 }
+
+.full-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(#d8ba66, #23a430, #28b8d5, #fc9f32);
+}
